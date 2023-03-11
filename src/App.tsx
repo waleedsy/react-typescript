@@ -1,24 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Button } from "./Components/Button";
+import { Greet } from "./Components/Greet";
+import { Heading } from "./Components/Heading";
+import { Input } from "./Components/Input";
+import { Oscar } from "./Components/Oscar";
+import { Person } from "./Components/Person";
+import { PersonList } from "./Components/personList";
+import { Status } from "./Components/Status";
 
 function App() {
+  const personName = { first: "Bruce", last: "Wayne" };
+  let inputTxt = prompt("Please enter status: ");
+
+  const nameList = [
+    { firstName: "Bruce", lastName: "Wayne" },
+    { firstName: "Clark", lastName: "Edwin" },
+    { firstName: "Princess", lastName: "Diana" },
+  ];
+
+  const validStatuses = ["loading", "error", "success"];
+  let status: "loading" | "error" | "success" | "invalid" = "loading"; // default status value
+
+  if (inputTxt === null) {
+    status = "invalid";
+  } else if (validStatuses.includes(inputTxt)) {
+    status = inputTxt as "loading" | "error" | "success";
+  } else {
+    status = "invalid";
+    alert("Please enter a valid status.");
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Heading>Placeholder text</Heading> */}
+      <Oscar>
+        {" "}
+        <Heading>Oscar goes to Leonardo Dicpario!</Heading>
+      </Oscar>
+      <Greet isLoggedIn={true} messageCount={20} name={personName.first} />
+      <Person name={personName} />
+      <PersonList names={nameList} />
+      {status === "invalid" ? (
+        <div>Error: Please enter a valid status.</div>
+      ) : (
+        <Status status={status} />
+      )}
+      <Button
+        handleClick={(event, id) => {
+          console.log("Button clicked.", event, id);
+        }}
+      />
+      <Input value="" handleChange={(event) => console.log(event)} />
     </div>
   );
 }
