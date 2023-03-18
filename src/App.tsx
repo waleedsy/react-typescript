@@ -7,6 +7,7 @@ import { Oscar } from "./Components/Oscar";
 import { Person } from "./Components/Person";
 import { PersonList } from "./Components/personList";
 import { Status } from "./Components/Status";
+import { Container } from "./Components/Container";
 
 function App() {
   const personName = { first: "Bruce", last: "Wayne" };
@@ -51,6 +52,7 @@ function App() {
         }}
       />
       <Input value="" handleChange={(event) => console.log(event)} />
+      <Container styles={{ border: "1px solid black", padding: "1rem" }} />
     </div>
   );
 }
