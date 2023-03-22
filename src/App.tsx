@@ -8,15 +8,16 @@ import { Person } from "./Components/Person";
 import { PersonList } from "./Components/personList";
 import { Status } from "./Components/Status";
 import { Container } from "./Components/Container";
+import { Name } from "./Components/personTypes";
 
 function App() {
   const personName = { first: "Bruce", last: "Wayne" };
   let inputTxt = prompt("Please enter status: ");
 
   const nameList = [
-    { firstName: "Bruce", lastName: "Wayne" },
-    { firstName: "Clark", lastName: "Edwin" },
-    { firstName: "Princess", lastName: "Diana" },
+    { first: "Bruce", last: "Wayne" },
+    { first: "Clark", last: "Edwin" },
+    { first: "Princess", last: "Diana" },
   ];
 
   const validStatuses = ["loading", "error", "success"];
